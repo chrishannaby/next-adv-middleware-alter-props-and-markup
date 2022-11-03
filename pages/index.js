@@ -1,21 +1,33 @@
-export default function Home(props) {
+const Page = ({ prices, unit }) => {
+	const [test, setTest] = useState(false);
 	return (
-		<ul>
-			{props.prices.map((price) => (
-				<li key={price.id}>{price.price}</li>
-			))}
-		</ul>
+		<div>
+			<h1 id="message">SSG page with middleware</h1>
+			<p>
+				Price:{' '}
+				<span
+					id="price"
+					data-prices={encodeURIComponent(JSON.stringify(prices))}
+				>
+					{prices[unit]}
+				</span>
+			</p>
+			<button onClick={() => setTest(!test)}>Click me</button>
+			<p>{test}</p>
+		</div>
 	);
-}
+};
 
 export async function getStaticProps() {
 	return {
 		props: {
-			prices: [
-				{ id: 1, price: 10 },
-				{ id: 2, price: 30 },
-				{ id: 3, price: 78 },
-			],
+			prices: {
+				yard: 3,
+				foot: 1,
+			},
+			unit: 'yard',
 		},
 	};
 }
+
+export default Page;
