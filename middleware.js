@@ -4,7 +4,7 @@ export async function middleware(nextRequest) {
 	const pathname = nextRequest.nextUrl.pathname;
 	const request = new MiddlewareRequest(nextRequest);
 
-	if (pathname.startsWith('/static')) {
+	if (pathname.startsWith('/')) {
 		const unit = nextRequest.nextUrl.searchParams.get('unit');
 		const response = await request.next();
 
