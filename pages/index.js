@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const Page = ({ prices, unit }) => {
 	const [test, setTest] = useState(false);
 	return (
