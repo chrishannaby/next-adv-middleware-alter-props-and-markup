@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 			{ params: { slug: 'b' } },
 			{ params: { slug: 'c' } },
 		],
-		fallback: true,
+		fallback: 'blocking',
 	};
 }
 
