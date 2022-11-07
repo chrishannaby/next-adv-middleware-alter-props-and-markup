@@ -5,7 +5,10 @@ const Page = ({ prices, unit, slug }) => {
 	const router = useRouter();
 	const [test, setTest] = useState(false);
 	console.log({ prices, unit, slug, router: router.query });
-	return (
+
+	return router.isFallback ? (
+		<h1>Loading...</h1>
+	) : (
 		<div>
 			<h1 id="message">SSG page with middleware: {slug}</h1>
 			<p>
@@ -30,7 +33,7 @@ export async function getStaticPaths() {
 			{ params: { slug: 'b' } },
 			{ params: { slug: 'c' } },
 		],
-		fallback: 'blocking',
+		fallback: true,
 	};
 }
 
