@@ -20,6 +20,17 @@ const Page = ({ prices, unit, slug }) => {
 	);
 };
 
+export async function getStaticPaths() {
+	return {
+		paths: [
+			{ params: { slug: 'a' } },
+			{ params: { slug: 'b' } },
+			{ params: { slug: 'c' } },
+		],
+		fallback: true,
+	};
+}
+
 export async function getStaticProps({ params }) {
 	const { slug } = params;
 	return {
