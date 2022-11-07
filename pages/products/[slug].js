@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Page = ({ prices, unit, slug }) => {
+	const router = useRouter();
 	const [test, setTest] = useState(false);
+	console.log({ prices, unit, slug, router: router.query });
 	return (
 		<div>
 			<h1 id="message">SSG page with middleware: {slug}</h1>
